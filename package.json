@@ -6,13 +6,17 @@
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "lint-staged",
+      "pre-receive": "echo 'pre-receive'",
+      "post-receive": "echo 'post-receive'",
+      "post-commit": "echo 'post-commit'"
+      
     }
   },
   "lint-staged": {
     "*.js": [
       "eslint --fix",
-      "cross-env CI=true yarn test --bail --findRelatedTests",
+      
       "git add"
     ]
   },
