@@ -6,10 +6,8 @@
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "husky": {
     "hooks": {
-      "pre-commit": "npm test",
-      "pre-push": "npm test",
-      "commit-msg": "echo $HUSKY_GIT_PARAMS",
-      "...": "..."
+      "pre-commit": "echo 'test'"
+     
     }
   },
   "dependencies": {
@@ -23,14 +21,15 @@
     "gatsby-source-filesystem": "^2.1.46",
     "gatsby-transformer-remark": "^2.6.50",
     "gatsby-transformer-sharp": "^2.3.13",
-    "husky": "^4.2.1",
+    
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-helmet": "^5.2.1"
   },
   "devDependencies": {
-    "prettier": "^1.19.1"
+    "prettier": "^1.19.1",
+    "husky": "^4.2.1"
   },
   "keywords": [
     "gatsby"
