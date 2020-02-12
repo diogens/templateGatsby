@@ -1,9 +1,10 @@
 import React from "react"
 
 import { Link, graphql } from "gatsby"
-import Layout from "../components/layout"
+import Layout from "../components/Layout"
 
 import SEO from "../components/seo"
+import GlobalStyle from "../style/global"
 
 export const linkList = graphql`
   query {
@@ -16,10 +17,12 @@ export const linkList = graphql`
         node {
           id
           frontmatter {
-            date(formatString: "DD [de] MMMM [de] YYYY", locale: "pt-br")
+            date(
+              formatString: "DD [de] MMMM [de] YYYY [as] HH:mm"
+              locale: "pt-br"
+            )
             path
             title
-            slug
           }
         }
       }
@@ -34,24 +37,16 @@ const IndexPage = ({ data }) => {
   return (
     <Layout>
       <SEO title="Home" />
+      <GlobalStyle />
 
-      <h1>Home</h1>
       <ul>
-        {edges.map(
-          ({
-            node: {
-              id,
-              frontmatter: { path, title, date, slug },
-            },
-          }) => (
-            <li key={id}>
-              <h1>{title}</h1>
-              <p>{date}</p>
-              <Link to={path}>Mais</Link>
-              <Link to={slug}>Mais - slug</Link>
-            </li>
-          )
-        )}
+        {edges.map(({ node: { id, frontmatter: { path, title, date } } }) => (
+          <li key={id}>
+            <h1>{title}</h1>
+            <p>{date}</p>
+            <Link to={path}>Mais</Link>
+          </li>
+        ))}
       </ul>
     </Layout>
   )
